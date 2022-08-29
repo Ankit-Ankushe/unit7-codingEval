@@ -67,6 +67,7 @@ const AddTodo = () => {
       </div>
       <br />
       <Button style={{margin:"auto",width:"300px", color:"white",backgroundColor:"darkgreen"}} variant="contained" onClick={()=> {addTodo(title,status,tag)}}>Add</Button> <br />
+      <br />
       <Button style={{margin:"auto",width:"300px", color:"white",backgroundColor:"darkgreen"}} variant="contained" onClick={()=> {nvaigateTodo()}}>Todo List</Button>
     </div>
   )
