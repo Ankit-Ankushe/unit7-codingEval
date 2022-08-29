@@ -94,7 +94,24 @@ async function addTask(req, res) {
 
 // Get all Tasks
 async function getTasks(req,res){
-    const data =await Task.find({})
+    const query = req.query
+    console.log(query)
+    let data
+    
+    if(query.status && query.tag){
+        console.log(query.status)
+        data = await Task.find({status: query.status,tag: query.tag})
+    }
+    else if(query.tag){
+        data = await Task.find({tag: query.tag})
+    }
+    else if(query.status){
+        data = await Task.find({status: query.status})
+    }
+    else if(!query.status && !query.tag){
+        data = await Task.find({})
+    }
+    // const data =await Task.find({})
     return res.send(JSON.stringify(data))
 }
 
@@ -120,7 +137,7 @@ async function updateTask(req,res){
     const {id} = req.params;
     let {title,status,tag} = req.body
     console.log(status)
-    const updated  = await Task.findOneAndUpdate({_id:id},{title: title,status: status,tag: tag})
+    const updated  = await Task.findByIdAndUpdate(id,{title: title,status: status,tag: tag})
     if(!updated){
         res.status(404).send({
             response: 'err',
@@ -133,6 +150,8 @@ async function updateTask(req,res){
         })
     }
 }
+
+
 
 module.exports = {
     registerUser,
