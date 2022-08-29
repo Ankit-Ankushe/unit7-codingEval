@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Todo from './components/Todo';
 import UpdateTodo from './components/UpdateTodo';
+import AddTodo from './components/AddTodo';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<Signup/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/todo' element={<Todo/>}></Route>
+        <Route path='/addTodo' element={<AddTodo/>}></Route>
         <Route path='/todo/:id' element ={<UpdateTodo/>}></Route>
       </Routes>
     </div>

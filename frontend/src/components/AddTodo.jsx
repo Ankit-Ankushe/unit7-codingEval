@@ -1,9 +1,14 @@
 import React from 'react'
+import { useState } from 'react'
+import { Button,  FormControlLabel, Radio, RadioGroup, TextField } from '@material-ui/core'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AddTodo = () => {
     const [title, setTitle] = useState("")
     const [status,setStatus] = useState("")
     const [tag,setTag] = useState("")
+    const navigate =useNavigate()
 
     // Add new Task
     const addTodo =(title,status,tag) => {
@@ -24,9 +29,11 @@ const AddTodo = () => {
             alert(res.message)
           }else{
             alert(res.message)
-            getData()
           }
         }).catch(err => console.log(err))
+      }
+      const nvaigateTodo =() => {
+        navigate('/todo')
       }
   return (
     <div>
@@ -59,7 +66,8 @@ const AddTodo = () => {
           </div>
       </div>
       <br />
-      <Button style={{margin:"auto",width:"300px", color:"white",backgroundColor:"darkgreen"}} variant="contained" onClick={()=> {addTodo(title,status,tag)}}>Add</Button>
+      <Button style={{margin:"auto",width:"300px", color:"white",backgroundColor:"darkgreen"}} variant="contained" onClick={()=> {addTodo(title,status,tag)}}>Add</Button> <br />
+      <Button style={{margin:"auto",width:"300px", color:"white",backgroundColor:"darkgreen"}} variant="contained" onClick={()=> {nvaigateTodo()}}>Todo List</Button>
     </div>
   )
 }

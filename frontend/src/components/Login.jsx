@@ -23,7 +23,7 @@ const Login = () => {
       .then((res) => {
         if(res.token){
           alert(res.message);
-          navigate('/todo')
+          navigate('/addTodo')
         }
         if (res.responce == 'error') {
           alert(res.message)
